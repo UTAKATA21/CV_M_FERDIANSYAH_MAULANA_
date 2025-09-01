@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M FERDIANSYAH MAULANA - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contact-item::before {
+            content: attr(data-icon);
+            font-weight: bold;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px;
+        }
+        
+        .left-column, .right-column {
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2a5298;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 30%;
+            height: 3px;
+            background: #764ba2;
+            border-radius: 2px;
+        }
+        
+        .profile-summary {
+            background: linear-gradient(135deg, #f5f7ff 0%, #e8f0ff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+        
+        .job {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #e8f0ff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .job:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .job:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: #2a5298;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .company-location {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .job-period {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        
+        .job-duties {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .job-duties li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .job-duties li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8em;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #e8f0ff;
+        }
+        
+        .skill-category h4 {
+            color: #2a5298;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+        
+        .education, .certification {
+            background: linear-gradient(135deg, #fff8f0 0%, #fff4e6 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff9500;
+        }
+        
+        .cert-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ffe6cc;
+            margin-bottom: 10px;
+        }
+        
+        .cert-name {
+            font-weight: bold;
+            color: #cc7a00;
+            margin-bottom: 5px;
+        }
+        
+        .cert-issuer {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">M FERDIANSYAH MAULANA</h1>
+                <div class="contact-info">
+                    <div class="contact-item" data-icon="📍">Pekanbaru, Riau, Indonesia</div>
+                    <div class="contact-item" data-icon="✉️">ferdiansyahmaulana21@gmail.com</div>
+                    <div class="contact-item" data-icon="📱">083161472530</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="left-column">
+                <section class="section">
+                    <h2 class="section-title">Kemampuan</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Hard Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Fiber Optic</span>
+                                <span class="skill-tag">Router Config</span>
+                                <span class="skill-tag">Switch Management</span>
+                                <span class="skill-tag">FTTH</span>
+                                <span class="skill-tag">Network Monitoring</span>
+                                <span class="skill-tag">Data Entry</span>
+                                <span class="skill-tag">Microsoft Office</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Komunikasi Efektif</span>
+                                <span class="skill-tag">Kerja Tim</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Kepemimpinan</span>
+                                <span class="skill-tag">Adaptasi Cepat</span>
+                                <span class="skill-tag">Berpikir Kritis</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">Pendidikan</h2>
+                    <div class="education">
+                        <h3 style="color: #cc7a00; margin-bottom: 8px;">Teknik Kendaraan Ringan</h3>
+                        <p><strong>SMK Swasta Ar-Rahman</strong></p>
+                        <p>Medan, Sumatera Utara</p>
+                        <p><em>Lulusan 2019 | Nilai: 81.5</em></p>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">Sertifikasi</h2>
+                    <div class="certification">
+                        <div class="cert-item">
+                            <div class="cert-name">eCertificate Internet TCP/IP</div>
+                            <div class="cert-issuer">Online Training • 2024</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="right-column">
+                <section class="section">
+                    <h2 class="section-title">Ringkasan Profil</h2>
+                    <div class="profile-summary">
+                        <p><strong>Network & Telecommunication Professional</strong> dengan pengalaman 1+ tahun di industri fiber optic dan FTTH. Ahli dalam troubleshooting jaringan real-time, monitoring kinerja teknisi, dan instalasi infrastruktur telekomunikasi. Terbukti mampu memimpin tim, menyelesaikan masalah kompleks, dan beradaptasi dengan teknologi terbaru. Siap berkontribusi dalam proyek-proyek strategis perusahaan.</p>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2 class="section-title">Pengalaman Profesional</h2>
+                    
+                    <div class="job">
+                        <h3 class="job-title">Engineer On Site DISKOMINFO SIAK</h3>
+                        <div class="company-location">PLN ICON PLUS • Pekanbaru</div>
+                        <div class="job-period">Januari 2025 – Desember 2025</div>
+                        <ul class="job-duties">
+                            <li>Mengelola komunikasi strategis antara user dan ICON PLUS untuk optimasi layanan</li>
+                            <li>Menangani laporan gangguan dan permintaan teknis dengan response time optimal</li>
+                            <li>Melakukan monitoring proaktif kondisi jaringan untuk memastikan uptime maksimal</li>
+                            <li>Melaksanakan recovery tingkat 1 dengan efisiensi tinggi</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job">
+                        <h3 class="job-title">Help Desk Network Operator Center</h3>
+                        <div class="company-location">PLN ICON PLUS • Pekanbaru</div>
+                        <div class="job-period">Juli 2024 – Desember 2024</div>
+                        <ul class="job-duties">
+                            <li>Menganalisis dan menyelesaikan masalah jaringan kompleks dengan pendekatan sistematis</li>
+                            <li>Memimpin monitoring kinerja teknisi lapangan untuk efisiensi operasional</li>
+                            <li>Menerapkan sistem monitoring real-time untuk deteksi dini potensi masalah</li>
+                            <li>Mengembangkan strategi preventif untuk meminimalkan downtime jaringan</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job">
+                        <h3 class="job-title">Junior Engineer</h3>
+                        <div class="company-location">PLN ICON PLUS • Pekanbaru</div>
+                        <div class="job-period">Juni 2023 – Juni 2024</div>
+                        <ul class="job-duties">
+                            <li>Mengelola troubleshooting harian dengan tingkat resolusi 95%+</li>
+                            <li>Melakukan instalasi fiber optic sesuai standar internasional</li>
+                            <li>Mengidentifikasi root cause analysis untuk optimasi jangka panjang</li>
+                            <li>Melaksanakan survei lokasi FTTH untuk ekspansi jaringan strategis</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job">
+                        <h3 class="job-title">Processing Specialist</h3>
+                        <div class="company-location">ID EXPRESS • Binjai</div>
+                        <div class="job-period">Oktober 2020 – Mei 2023</div>
+                        <ul class="job-duties">
+                            <li>Mengelola sistem tracking dan update pesanan dengan akurasi tinggi</li>
+                            <li>Menangani customer service dan feedback dengan profesionalisme</li>
+                            <li>Mengoptimalkan proses logistik dan packaging untuk efisiensi operasional</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <button class="print-btn" onclick="window.print()">🖨️ Print CV</button>
+</body>
+</html>
